@@ -1,0 +1,31 @@
+server:
+  port: 8889
+  servlet:
+    context-path: /admin
+spring:
+  datasource:
+    username: root
+    password: rootroot
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ShareHorizon?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+  data:
+    redis:
+      username: root
+      database: 0
+      host: localhost
+
+  mail:
+    host: smtp.qq.com
+    username: aaronduz@qq.com
+    password: kpirfnaqsfljecii
+    properties:
+      mail:
+        smtp:
+          ssl:
+            enable: true
+    default-encoding: UTF-8
+
+  servlet:
+    multipart:
+      max-request-size: 200MB
+      max-file-size: 200MB
