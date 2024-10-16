@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M3U8 播放器</title>
+    <!-- 引入 Video.js CSS -->
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.min.css" rel="stylesheet">
+    <!-- 引入 Video.js JS -->
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <!-- 引入 HLS 插件 -->
+    <script src="https://cdn.jsdelivr.net/npm/videojs-contrib-hls@5.15.0/dist/videojs-contrib-hls.min.js"></script>
+</head>
+<body>
+    <div style="text-align: center; margin-top: 50px;">
+        <h1>M3U8 播放器</h1>
+        <input type="text" id="m3u8Url" placeholder="请输入 M3U8 链接" style="width: 500px; padding: 10px; margin-bottom: 20px;">
+        <button onclick="playM3U8()">播放</button>
+    </div>
+
+    <video id="myVideo" class="video-js vjs-default-skin" controls preload="auto" width="640" height="264">
+        <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+    </video>
+
+    <script>
+        function playM3U8() {
+            const url = document.getElementById('m3u8Url').value;
+            if (url) {
+                const player = videojs('myVideo');
+                player.src({ src: url, type: 'application/x-mpegURL' });
+                player.play();
+            } else {
+                alert('请输入有效的 M3U8 链接');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -2,6 +2,7 @@ package com.Aaron.admin.controller;
 
 import com.Aaron.service.IMovieInfoService;
 import com.Aaron.utils.Result;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,8 +31,16 @@ public class MovieInfoController {
 
 
     @PostMapping("/upload-chunk")
-    private Result<String> uploadBigFile(@RequestParam MultipartFile file,@RequestParam int chunkNumber,@RequestParam int totalChunks,@RequestParam String name){
-        return Result.ok(movieInfoService.uploadBigFile(file,chunkNumber,totalChunks,name));
+    @Operation(summary = "上传电影")
+    public Result<String> uploadBigFile(@RequestParam MultipartFile file,@RequestParam int chunkNumber,@RequestParam int totalChunks,@RequestParam String name){
+        String s = movieInfoService.uploadBigFile(file, chunkNumber, totalChunks, name);
+        return Result.ok(s);
+    }
+
+    @PostMapping("/test")
+    @Operation(summary = "测试")
+    public Result<String> test(){
+        return Result.ok("test");
     }
 
 }
